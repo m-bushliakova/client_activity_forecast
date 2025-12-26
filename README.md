@@ -24,7 +24,7 @@ https://www.kaggle.com/datasets/shivamb/bank-customer-segmentation
 ## Ключевые признаки:
 CustomerID
 TransactionDate
-TransactionAmount
+TransactionAmount (INR)
 
 ## Дополнительные признаки:
 CustGender
