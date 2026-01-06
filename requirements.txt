@@ -1,0 +1,4 @@
+kagglehub
+numpy
+matplotlib
+pandas

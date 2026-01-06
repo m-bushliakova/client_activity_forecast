@@ -7,37 +7,41 @@
 
 # Задача:
 
+# Эволюция проекта
 
-# Данные:
-https://www.kaggle.com/datasets/shivamb/bank-customer-segmentation
-Данные о демографии и транзакциях клиентов индийского банка.
-Содержит 1 миллион транзакций 800 тыс. клиентов.
-Содержит следующую информацию:
-- customer age (DOB)
-- location
-- gender
-- account balance at the time of the transaction
-- transaction details
-- transaction amount
-- etc.
+## Фаза 1. Анализ исходных данных
+Изначально планировалось использовать датасет [Bank Customer Segmentation](https://www.kaggle.com/datasets/shivamb/bank-customer-segmentation). 
+В ходе детального EDA обнаружены критичные ограничения:
+- всего 2.5 месяца данных
+- 75% клиентов совершили только 1 транзакцию
+- нельзя построить признаки временных рядов
+
+[Посмотреть полный анализ](notebooks/02_initial_eda.ipynb, notebooks/03_decision_document.ipynb)
+
+## Фаза 2. Выбор нового датасета
+После оценки нескольких альтернатив выбираем новый ? датасет который:
+- Содержит ? месяцев транзакционных данных
+- Имеет устойчивые паттерны активности клиентов
+- Позволяет построить полный цикл прогнозного моделирования
+
+[Обоснование выбора](notebooks/02_decision_document.md)
+
+## Фаза 3: Построение модели на новых данных
+
+
+# Финальные данные, используемые для построения модели:
 
 ## Ключевые признаки:
-CustomerID
-TransactionDate
-TransactionAmount (INR)
+
 
 ## Дополнительные признаки:
-CustGender
-CustLocation
-CustAccountBalance
+
 
 ## Целевая переменная:
-Целевая переменная "активность в следующем месяце" неявная, необходимо предварительно её сформулировать
+Целевая переменная "активность в следующем месяце" 
 
 ## Необходимая предобработка:
-- группировка транзакций по месяцу и CustomerID
-- сдвиг во времени
-- очистка и проверка на выбросы, пропуски
+
 
 ## Создание признаков:
 
@@ -50,6 +54,30 @@ CustAccountBalance
 - scikit-learn
 - 
 
+# Примерная структура проекта
+client_activity_forecast/
+├── data/
+│   ├── initial_dataset/          # ПЕРВОНАЧАЛЬНЫЙ датасет с Kaggle
+│   │   ├── raw/                  # Исходные CSV
+│   │   └── analysis/             # Результаты EDA
+│   └── final_dataset/            # ФИНАЛЬНЫЙ датасет для моделирования
+│       ├── raw/                  # Новые данные
+│       └── processed/            # Обработанные версии
+├── notebooks/
+│   ├── 01_data_overview.ipynb   # Быстрый обзор ПЕРВОНАЧАЛЬНОГО датасета
+│   ├── 02_eda_initial.ipynb     # Анализ ПЕРВОНАЧАЛЬНОГО датасета
+│   ├── 03_decision_document.md  # Документ с решением о смене датасета
+│   ├── 04_eda_final.ipynb       # Анализ ФИНАЛЬНОГО датасета
+│   ├── 05_feature_engineering.ipynb
+│   └── 06_modeling.ipynb
+├── src/
+│   ├── data_processing.py
+│   ├── features.py
+│   └── model.py
+├── docs/
+│   └── dataset_evaluation.md     # Подробный отчет об анализе
+├── README.md
+└── requirements.txt
 
 # Как запустить
 
