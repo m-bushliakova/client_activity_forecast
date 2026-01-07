@@ -2,3 +2,6 @@ kagglehub
 numpy
 matplotlib
 pandas
+huggingface_hub
+pyarrow
+lightgbm
