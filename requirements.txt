@@ -6,3 +6,9 @@ huggingface_hub
 pyarrow
 lightgbm
 seaborn
+scikit-learn
+catboost
+
+mlflow
+statsmodels
+networkx
