@@ -120,21 +120,20 @@
 ```
 client_activity_forecast/
 │
-├── data/                          # Данные проекта
-│   ├── processed/                  # Финальные датасеты для моделирования
-│   └── test_datasets/              # Исходные транзакционные данные
+├── data/                           # Данные проекта
+│   ├── processed/                  # Финальные датасет с сгенерированными признаками
 │
-├── notebooks/                      # Jupyter ноутбуки с исследованиями
-│   ├── 01_initial_data_overview.ipynb
-│   ├── 02_dataset_choice.ipynb
-│   ├── 03_check_mbd_dataset.ipynb
-│   ├── 04_full_eda.ipynb
-│   ├── 05_preprocess_and_feature_eng.ipynb
-│   ├── 06_model_pipeline.ipynb
-│   └── 07_results_analysis.ipynb
+├── notebooks/                               # Jupyter ноутбуки с исследованиями
+│   ├── 01_initial_data_overview.ipynb       # Анализ первого датасета, чтоб понять подходит ли он для задачи
+│   ├── 02_dataset_choice.ipynb              # Выбор подходящего датасета
+│   ├── 03_check_mbd_dataset.ipynb           # Первичный анализ подходящего датасета
+│   ├── 04_full_eda.ipynb                    # Полный анализ
+│   ├── 05_preprocess_and_feature_eng.ipynb  # Генерация признаков
+│   ├── 06_model_pipeline.ipynb              # Запуск пайплайна из блокнота Jupyter
+│   └── 07_results_analysis.ipynb            # Анализ результатов работы модели
 │
-├── src/                           # Исходный код
-│   ├── config.py                   # Конфигурационные параметры
+├── src/                             # Исходный код
+│   ├── config.py                    # Конфигурационные параметры
 │   ├── cross_val_utils.py           # Утилиты для временной CV
 │   ├── data_processing.py           # Загрузка и подготовка данных
 │   ├── feature_selection.py         # Отбор признаков
@@ -143,13 +142,12 @@ client_activity_forecast/
 │   ├── model.py                     # Обучение моделей
 │   ├── logging_utils.py             # Логирование
 │   ├── pipelines.py                 # Главный пайплайн
-│   └── evaluation.py                # Оценка результатов
 │
 ├── pipeline_results/                # Результаты запусков
 │   ├── dev/                         # Этап разработки
 │   └── final/                       # Финальный этап
 │
-├── run_pipeline.py                  # Точка входа
+├── run_pipeline.py                  # Точка входа при запуске из терминала
 ├── requirements.txt                 # Зависимости
 └── README.md                        # Документация
 ```
@@ -224,6 +222,7 @@ from datasets import load_dataset
 dataset = load_dataset('ai-lab/MBD-mini', cache_dir='data/raw')
 dataset.save_to_disk('data/raw/mbd_dataset')
 "
+сгенерировать признаки notebooks/05_prprocess_feature_eng.ipynb
 ```
 
 ### 3. Настройка MLflow 
