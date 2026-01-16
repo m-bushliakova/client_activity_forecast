@@ -12,3 +12,5 @@ catboost
 mlflow
 statsmodels
 networkx
+optuna
+optuna-integration
